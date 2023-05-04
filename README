@@ -1,5 +1,14 @@
 This is the README file for the BK channel voltage-gating predictor repository.
 
+
+Directories:
+==========
+py/ contains python scripts
+preds/ contains predictions file
+data/ contains raw data, data splits, and prediction scans
+
+Python scripts:
+==============
 Script to write out predictions, for example, from split0
 python py/kfold_write_preds.py split0
 
@@ -9,3 +18,11 @@ python py/kfoldCI_plot_testCV.py
 Script to write out all predictions to preds/predictionsCI.csv
 python py/scan-CI.py
 
+raw data for the mutations in dataset
+data/scores.csv
+
+prediction scans and also raw data
+data/scans/*
+
+All predictions to BK channel (PDB numbering)
+preds/predictionsCI.csv
