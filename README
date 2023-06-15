@@ -7,6 +7,36 @@ py/ contains python scripts
 preds/ contains predictions file
 data/ contains raw data, data splits, and prediction scans
 
+Data files:
+===========
+scores.csv: contains the raw energy terms and descriptors for all mutations in expt data set
+BK_mutations.xlsx: all the expt data (from literature and unpublished from Cui lab), including unused in publication
+  (some mutations don't match human sequence, some don't contain dV1/2 at nominally 0 microMolar Ca2+, etc)
+
+
+scans/ : contains the data for all mutations, not just those in expt dataset
+  X.csv : input features for all residues to X (single-letter AA code)
+  X.npy : predicted dV1/2 for all residue to X (single-letter AA code)
+
+splitN/ : contains the 5 80/20 splits presented in publication
+  each of these directories itself contains 5-fold CV on the 80% training data for that split, so there are corresponding files:
+  XN_train.npy / yN_train.npy
+  XN_test.npy / yN_test.npy
+  [X/y]5_train.npy contains the full 80% training data for splitN
+  p[X/y]N_[train/test].npy : predictions 
+  
+  validation/ : contains the remaining 20%
+
+
+Prediction files:
+================
+
+predictionsCI.csv: data file contains predicted dV1/2 +/- error estimate for all mutations, and some additonal information to guide a search in columns:
+  NmutNeighbors: Number of mutations (in our expt dataset) within an 8A cutoff of the residue
+  Resid, WT and MT (single-letter AA abbreviation)
+
+CM_mut.csv: list of all residues and the number of mutations within 8A in the expt dataset
+
 Python scripts:
 ==============
 Script to write out predictions, for example, from split0
